@@ -42,8 +42,3 @@ h1 {
 #output {
   font-size: 1.5rem;
 }
-footer {
-  position: fixed;
-  bottom: 0;
-  text-align: right;
-}
