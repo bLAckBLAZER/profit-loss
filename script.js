@@ -3,6 +3,7 @@ const numberOfStocks = document.querySelector("#number-of-stocks");
 const currentPrice = document.querySelector("#current-price");
 const btnCalculate = document.querySelector("#btn-calculate");
 const output = document.querySelector("#output");
+const body = document.querySelector("body");
 
 function validateInput() {
   if (
@@ -24,6 +25,24 @@ function validateInput() {
   return true;
 }
 
+function changeStyleLoss() {
+  body.style.backgroundColor = "#F87171";
+  initialPrice.style.border = "2px solid #DC2626";
+  numberOfStocks.style.border = "2px solid #DC2626";
+  currentPrice.style.border = "2px solid #DC2626";
+  btnCalculate.style.backgroundColor = "#F87171";
+  btnCalculate.style.border = "2px solid #DC2626";
+}
+
+function changeStyleProfit() {
+  body.style.backgroundColor = "#6EE7B7";
+  initialPrice.style.border = "2px solid green";
+  numberOfStocks.style.border = "2px solid green";
+  currentPrice.style.border = "2px solid green";
+  btnCalculate.style.backgroundColor = "background-color: #34d399";
+  btnCalculate.style.border = "none";
+}
+
 function calculateProfitLoss() {
   if (!validateInput()) {
     return;
@@ -39,6 +58,7 @@ function calculateProfitLoss() {
     output.innerText = `The loss is of Rs. ${lossAmount.toFixed(
       3
     )} and the loss percentage is ${lossPercentage.toFixed(3)}%`;
+    changeStyleLoss();
   } else {
     const profitAmount = currentAmount - totalInvestment;
     const profitPercentage = (profitAmount / totalInvestment) * 100;
@@ -46,6 +66,7 @@ function calculateProfitLoss() {
     output.innerText = `Yay!! The profit is of Rs. ${profitAmount.toFixed(
       3
     )} and the profit percentage is ${profitPercentage.toFixed(3)}%`;
+    changeStyleProfit();
   }
 }
 
